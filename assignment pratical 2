@@ -1,0 +1,40 @@
+def calculate_current(voltage, resistance):
+  """
+  Calculates current using Ohm's Law (I = V/R).
+  
+  Args:
+    voltage: The voltage in volts (V).
+    resistance: The resistance in ohms (Ω).
+    
+  Returns:
+    The current in amperes (A).
+  """
+  return voltage / resistance
+
+def main():
+  print("Ohm's Law Current Calculator")
+  
+  # Use a try-except block to handle potential errors in user input
+  try:
+    # Get voltage and resistance from the user and convert to floating-point numbers
+    voltage = float(input("Enter the voltage (V) in volts: "))
+    resistance = float(input("Enter the resistance (R) in ohms: "))
+    
+    # Check for division by zero, which is not allowed
+    if resistance == 0:
+      print("Error: Resistance cannot be zero when calculating current.")
+      return
+
+    # Calculate the current
+    current = calculate_current(voltage, resistance)
+    
+    # Display the result
+    print(f"The current (I) is: {current:.2f} amperes (A)")
+    
+  except ValueError:
+    print("Error: Please enter numerical values for voltage and resistance.")
+  except ZeroDivisionError:
+    print("Error: Division by zero is not possible. Resistance must be a non-zero value.")
+
+if __name__ == "__main__":
+  main()
