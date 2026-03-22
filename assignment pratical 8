@@ -1,0 +1,33 @@
+def convert_to_uppercase(input_filename, output_filename):
+    """
+    Reads content from input_filename and writes it in uppercase to output_filename.
+    """
+    try:
+        # Open the input file in read mode ('r')
+        with open(input_filename, 'r') as input_file:
+            # Read the entire content of the file and convert to uppercase
+            content = input_file.read().upper()
+
+        # Open the output file in write mode ('w')
+        # If the file doesn't exist, it will be created. If it exists, it will be overwritten.
+        with open(output_filename, 'w') as output_file:
+            # Write the uppercase content to the output file
+            output_file.write(content)
+            
+        print(f"Successfully converted content from '{input_filename}' to '{output_filename}' in uppercase.")
+        
+    except FileNotFoundError:
+        print(f"Error: The file '{input_filename}' was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# --- Example Usage ---
+# 1. Create a sample input file (optional, you can create one manually)
+try:
+    with open('input.txt', 'w') as f:
+        f.write("Hello world!\nThis is a test file for Python file handling operations.")
+except:
+    print("Could not create sample input file.")
+
+# 2. Run the function to convert the file
+convert_to_uppercase('input.txt', 'output.txt')
