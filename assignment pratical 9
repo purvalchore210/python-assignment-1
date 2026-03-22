@@ -1,0 +1,57 @@
+class Employee:
+    """Base class for all employees, containing common attributes."""
+    def __init__(self, name, age, salary, address):
+        self.name = name
+        self.age = age
+        self.salary = salary
+        self.address = address
+
+    def get_info(self):
+        """Method to get common employee details from user input."""
+        self.name = input("Enter Name: ")
+        self.age = input("Enter Age: ")
+        self.salary = input("Enter Salary: ")
+        self.address = input("Enter Address: ")
+
+    def print_info(self):
+        """Method to print common employee details."""
+        print(f"\nName: {self.name}")
+        print(f"Age: {self.age}")
+        print(f"Salary: {self.salary}")
+        print(f"Address: {self.address}")
+
+class Manager(Employee):
+    """Derived class for managers, inheriting from Employee."""
+    def __init__(self, name="", age="", salary="", address="", department=""):
+        super().__init__(name, age, salary, address)
+        self.department = department
+
+    def get_info(self):
+        """Overrides parent method to also get manager-specific details (department)."""
+        print("\nEnter Manager Details:")
+        super().get_info()
+        self.department = input("Enter Department: ")
+
+    def print_info(self):
+        """Overrides parent method to also print manager-specific details."""
+        super().print_info()
+        print(f"Department: {self.department}")
+        print("-" * 20) # Separator for better readability
+
+# Main part of the program to process 10 managers
+managers_list = []
+num_managers = 10
+
+print(f"--- Enter details for {num_managers} managers ---")
+
+for i in range(num_managers):
+    print(f"\n--- Manager {i+1} ---")
+    manager = Manager()
+    manager.get_info()
+    managers_list.append(manager)
+
+print(f"\n\n--- Displaying details for {len(managers_list)} managers ---")
+
+for manager in managers_list:
+    manager.print_info()
+
